@@ -36,7 +36,7 @@ export default class MaskedInput extends React.Component {
     return (
       <input
         {...props}
-        onInput={event => this.onChange(event)}
+        onChange={this.props.defaultValue ? null : this.onChange}
         ref={inputElement => {
           this.inputElement = inputElement;
           this.props.innerRef && this.props.innerRef(inputElement);
