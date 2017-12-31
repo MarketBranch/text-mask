@@ -31,12 +31,16 @@ export default class MaskedInput extends React.Component {
     delete props.keepCharPositions;
     delete props.onChange;
     delete props.showMask;
+    delete props.innerRef;
 
     return (
       <input
         {...props}
         onInput={event => this.onChange(event)}
-        ref={inputElement => (this.inputElement = inputElement)}
+        ref={inputElement => {
+          this.inputElement = inputElement;
+          this.props.innerRef && this.props.innerRef(inputElement);
+        }}
       />
     );
   }
