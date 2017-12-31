@@ -21,6 +21,14 @@ export default class MaskedInput extends React.Component {
     this.initTextMask();
   }
 
+  onChange(event) {
+    this.textMaskInputElement.update();
+
+    if (typeof this.props.onChange === 'function') {
+      this.props.onChange(event);
+    }
+  }
+
   render() {
     const props = { ...this.props };
 
@@ -43,14 +51,6 @@ export default class MaskedInput extends React.Component {
         }}
       />
     );
-  }
-
-  onChange(event) {
-    this.textMaskInputElement.update();
-
-    if (typeof this.props.onChange === 'function') {
-      this.props.onChange(event);
-    }
   }
 }
 
